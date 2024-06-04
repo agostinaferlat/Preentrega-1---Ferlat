@@ -1,0 +1,38 @@
+h1, h5, p, a{
+  font-family: 'Montserrat', sans-serif
+}
+
+h1, h5{
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.btnComprar {
+  background-color: #E5CDE8;
+  color: black;
+  padding: 8px 16px;
+  margin: 4px 2px;
+}
+
+.btnComprar:hover {
+  background-color: #c472b1a2;
+  color: black;
+}
+
+.buttonStyle{
+  margin-top: 8px;
+  justify-content: center;
+  background-color: #D8CDE8;
+  color: black;
+}
+
+.buttonStyle:hover {
+  background-color: #53085286;
+  color: black;
+}
+
+.form-control:focus {
+  border-color: #cbecfd;
+  box-shadow: 0 0 0 0.2rem rgb(215, 205, 231);
+}

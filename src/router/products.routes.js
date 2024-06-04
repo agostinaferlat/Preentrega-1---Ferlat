@@ -52,7 +52,7 @@ router.post("/", checkProductData, async (req, res) => {
 router.put("/:pid", async (req, res) => {
     try {
         const { pid } = req.params;
-        const body = re.body;
+        const body = req.body;
         const product = await productManager.updateProduct(Number(pid), body);
         if (!product) return res.status(404).json({status:"Error", msg:"No se encontró el producto"})
 
