@@ -1,6 +1,8 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
+      
+
       <form class="m-3" id="addForm">
         <input id="title" type="text" name="title" placeholder="Nombre del producto" class="text-center form-control mb-2" />
         <input id="price" type="text" name="price" placeholder="Precio del producto" class="text-center form-control mb-2" />
@@ -8,6 +10,7 @@
         <button type="submit" class="ms-4 btn buttonStyle btn-block">Agregar producto</button>
       </form>
     </div>
+  
   
     <div class="col-md-6 d-flex justify-content-center">
       <form class="m-3" id="deleteForm">
@@ -27,16 +30,18 @@
 
       <h1 class="p-4 m-3">Lista de productos</h1>
      
-      <div id="productCardContainer" class="d-flex flex-wrap justify-content-center mt-5">
+      <div id="productsCardContainer" class="d-flex flex-wrap justify-content-center mt-5">
         {{#each products}}
-          <div class="card m-4 p-2" style="width: 18rem;">
-            <div class="card-body text-center">
-              <h5 class="card-title">{{this.title}}</h5>
-              <p class="card-text">{{this.id}}</p>
-              <p class="card-text">{{this.description}}</p>
-              <p class="card-text">{{this.price}}</p>
+          {{#if status}}
+            <div class="card m-4 p-2" style="width: 18rem;">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">ID: {{this._id}}</p>
+                <p class="card-text">{{this.description}}</p>
+                <p class="card-text">{{this.price}}</p>
+              </div>
             </div>
-          </div>
+          {{/if}}  
         {{/each}}
       </div>  
     
