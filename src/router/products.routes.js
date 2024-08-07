@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { checkProductData } from "../middlewares/middlewares.js";
 import productDao from "../dao/MongoDB/product.dao.js";
+import { passportCall } from "../middlewares/passport.middleware.js";
+import { authorization } from "../middlewares/authorization.middleware.js"
 
 
 const router = Router();
 
 // Para traer todos los productos
-router.get("/", async (req, res) => {
+router.get("/", passportCall ("jwt"), authorization ("user"), async (req, res) => {
     try {
         const { limit, page, sort, category, status } = req.query;
 
@@ -34,7 +36,7 @@ router.get("/", async (req, res) => {
         
     } catch (error) {
        console.log(error);
-       res.status(500).json({status: "Error", msg: "Error interno del servidor"});
+       res.status(500).json({status: "Error", msg: "Internal server error"});
     }
 });
 
@@ -44,13 +46,13 @@ router.get("/:pid", async (req, res) => {
         const { pid } = req.params;
         const product = await productDao.getById(pid);
 
-        if (!product) return res.status(404).json({status: "Error", msg:"No se encontró el producto"})
+        if (!product) return res.status(404).json({status: "Error", msg:"Product not found"})
 
         res.status(200).json({status: "success", product});
         
     } catch (error) {
        console.log(error);
-       res.status(500).json({status: "Error", msg: "Error interno del servidor"});
+       res.status(500).json({status: "Error", msg: "Internal server error"});
     }
 });
 
@@ -65,7 +67,7 @@ router.post("/", checkProductData, async (req, res) => {
         
     } catch (error) {
        console.log(error);
-       res.status(500).json({status: "Error", msg: "Error interno del servidor"});
+       res.status(500).json({status: "Error", msg: "Internal server error"});
     }
 });
 
@@ -75,13 +77,13 @@ router.put("/:pid", async (req, res) => {
         const { pid } = req.params;
         const productData = req.body;
         const product = await productDao.update(pid, productData);
-        if (!product) return res.status(404).json({status:"Error", msg:"No se encontró el producto"})
+        if (!product) return res.status(404).json({status:"Error", msg:"Product not found"})
 
         res.status(200).json({status: "success", product});
         
     } catch (error) {
        console.log(error);
-       res.status(500).json({status: "Error", msg: "Error interno del servidor"});
+       res.status(500).json({status: "Error", msg: "Internal server error"});
     }
 });
 
@@ -90,13 +92,13 @@ router.delete("/:pid", async (req, res) => {
     try {
         const { pid } = req.params;
         const product = await productDao.deleteOne(pid);
-        if (!product) return res.status(404).json({status:"Error", msg:"No se encontró el producto"})
+        if (!product) return res.status(404).json({status:"Error", msg:"Product not found"})
 
-        res.status(200).json({status: "success", msg:`El producto con el id ${pid} ha sido eliminado`});
+        res.status(200).json({status: "success", msg:`Product with ID ${pid} has been deleted.`});
         
     } catch (error) {
        console.log(error);
-       res.status(500).json({status: "Error", msg: "Error interno del servidor"});
+       res.status(500).json({status: "Error", msg: "Internal server error"});
     }
 });
 

@@ -5,8 +5,14 @@ import __dirname from "./dirname.js";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import { connectMongoDB } from "./config/mongoDB.config.js";
+import session from "express-session";
+import cookieParser from "cookie-parser";
+import envs from "./config/envs.config.js"
+import passport from "passport";
+import { initializePassport } from "./config/passport.config.js";
 
-const PORT = 8080;
+
+
 
 const app = express();
 
@@ -16,6 +22,20 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use("/static", express.static(__dirname + "/public"));
 app.use(express.static("public"));
+
+app.use(cookieParser());
+
+app.use(
+  session({
+    secret: envs.SECRET_CODE,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.engine ("handlebars", handlebars.engine());
@@ -32,10 +52,12 @@ app.use ("/api", router);
 
 
 
-const httpServer = app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`));
+const httpServer = app.listen(envs.PORT, () => {
+  console.log(`Server on port ${envs.PORT}`);
+});
 
 export const io = new Server(httpServer);
 
 io.on("connection", (socket) => {
-  console.log("Nuevo usuario Conectado");
+  console.log("New user connected");
 });

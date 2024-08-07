@@ -7,7 +7,7 @@ const getAll= async () => {
 };
 
 const getById= async (id) => {
-    const carts = await cartModel.findById(id);
+    const carts = await cartModel.findById(id).populate ("products.product");
     return carts;
 };
 
@@ -18,7 +18,6 @@ const create = async () => {
 
 const update = async (id, data) => {
     await cartModel.findByIdAndUpdate(id, data, {new: true});
-    // const cartUpdate = await cartModel.findById(id);
     return cartUpdate;
 };
 
@@ -28,19 +27,7 @@ const deleteOne = async (data) => {
 };
 
 const addProductToCart = async (cid, pid) => {
-    // const product = await productModel.findById (pid);
-    // if (!product) return { product: false };
-    // const cart = await cartModel.findById (cid);
-    // if (!cart) return { cart: false };
-
-    // const productInCart = await cartModel.findOneAndUpdate({_id: cid, "products.product": pid}, {$inc: {"products.$.quantity": 1}});
-
-    // if (!productInCart) {
-    //     await cartModel.updateOne ({ _id: cid }, { $push: { products: {product: pid, quantity: 1} } });
-    // }
-    // const cartUpdate = await cartModel.findById (cid);
-    // return cartUpdate;
-
+    
     const cart = await cartModel.findById(cid);
    
     const productInCart = cart.products.find((product) => product.product == pid);

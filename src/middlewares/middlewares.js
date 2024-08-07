@@ -28,7 +28,7 @@ export const checkProductData = async (req = request, res = response, next) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({status: "Error", msg: "Error interno del servidor"});
+        res.status(500).json({status: "Error", msg: "Internal server error"});
     }
 };
 
@@ -51,7 +51,7 @@ export const checkCartAndProductIds = async (req = request, res = response, next
         
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: "Error", msg: "Error interno del servidor" });
+        res.status(500).json({ status: "Error", msg: "Internal server error" });
     }
 };
 

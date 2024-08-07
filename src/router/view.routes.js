@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     res.render("home", { products , styles:"styles.css" });
   }catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -22,7 +22,7 @@ router.get("/realtimeproducts", async (req, res) => {
     res.render("realTimeProducts", {products , styles:"styles.css"});
   }catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -36,7 +36,7 @@ router.post("/realtimeproducts", async (req, res) => {
     res.render("realTimeProducts", {styles:"styles.css"});
   }catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -57,23 +57,10 @@ router.delete("/realtimeproducts/:id", async (req, res) => {
     res.render("realTimeProducts", { products, styles: "styles.css" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
-// router.delete("/realtimeproducts", async (req, res) => {
-//   try {
-//     const { _id } = req.body;
-//     await productModel.findByIdAndDelete(_id);
-//     const products = await productModel.find();
-//     io.emit("products", products);
-
-//     res.render("realTimeProducts");
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: "Error interno del servidor" });
-//   }
-// });
 
 
 export default router;
