@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "43c7f3c5-878c-4a50-803f-138e0e9260ac",
-		"name": "Preentrega 1 - Ferlat",
+		"name": "Proyecto Final - Ferlat",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "35043062"
 	},
@@ -44,12 +44,12 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/api/carts/66b2b9cb2c6e426e9f6497cc"
+						"url": "http://localhost:8080/api/carts/66d171ab6a6153cc6815fbb6"
 					},
 					"response": []
 				},
 				{
-					"name": "Add product in cart",
+					"name": "Add product to cart",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -62,7 +62,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/api/carts/66b2ad3592f0435ca8d76832/product/6678a99598229198cc8cf68a"
+						"url": "http://localhost:8080/api/carts/66d171ab6a6153cc6815fbb6/product/6678a90098229198cc8cf67a"
 					},
 					"response": []
 				},
@@ -71,7 +71,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:8080/api/carts/66786680fdcb5ce0766db5a8/product/66785aaed6dbcb8c3865aa43"
+						"url": "http://localhost:8080/api/carts/66b2ad3592f0435ca8d76832/product/6678a99598229198cc8cf68a"
 					},
 					"response": []
 				},
@@ -82,14 +82,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"quantity\": 7\r\n}",
+							"raw": "{\r\n    \"quantity\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8080/api/carts/6678ab3798229198cc8cf6a3/product/6678a98398229198cc8cf686"
+						"url": "http://localhost:8080/api/carts/66cfb765c7d9012d6fe52280/product/6678a98398229198cc8cf686"
 					},
 					"response": []
 				},
@@ -99,6 +99,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": "http://localhost:8080/api/carts/66786680fdcb5ce0766db5a8"
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/carts/66d171ab6a6153cc6815fbb6/purchase"
 					},
 					"response": []
 				}
@@ -113,7 +122,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products",
+							"raw": "http://localhost:8080/api/products?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -125,19 +134,13 @@
 							],
 							"query": [
 								{
-									"key": "page",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "category",
-									"value": "Accesorios",
-									"disabled": true
-								},
-								{
 									"key": "sort",
 									"value": "asc",
 									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2"
 								}
 							]
 						}
@@ -149,7 +152,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/api/products/6678a98398229198cc8cf686"
+						"url": "http://localhost:8080/api/products/6678a95898229198cc8cf67e"
 					},
 					"response": []
 				},
@@ -160,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Manta tubo pequeña\",\r\n    \"description\": \"Manta tubular pequeña, se puede usar como manta y como cama al doblarse\",\r\n    \"price\": 11200,\r\n    \"thumbnail\": [],\r\n    \"code\": \"MTP854\",\r\n    \"stock\": 11,\r\n    \"category\": \"Accesorios\"\r\n}",
+							"raw": "{\r\n    \"title\": \"MANTOOO\",\r\n    \"description\": \"Manta tubular pequeña, se puede usar como manta y como cama al doblarse\",\r\n    \"price\": 11200,\r\n    \"thumbnail\": [],\r\n    \"code\": \"MOP858\",\r\n    \"stock\": 11,\r\n    \"category\": \"Accesorios\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -178,14 +181,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"price\": 2500\r\n}",
+							"raw": "{\r\n    \"stock\": 21\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8080/api/products/66777736aa5bb66b3e1bc0e6"
+						"url": "http://localhost:8080/api/products/66785a6fd6dbcb8c3865aa40"
 					},
 					"response": []
 				},
@@ -203,7 +206,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/api/products/6677795fd371c2ae34bfe47a"
+						"url": "http://localhost:8080/api/products/66cfc5dceb391d5c850ac932"
 					},
 					"response": []
 				}
@@ -219,7 +222,25 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"taylorina@gmail.com\",\r\n    \"password\":\"stuckin1989\"\r\n}",
+							"raw": "{\r\n    \"email\":\"tatiru@gmail.com\",\r\n    \"password\":\"motherRussia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/session/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"administrador@gmail.com\",\r\n    \"password\":\"admin12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -237,7 +258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Daniela\",\r\n    \"last_name\": \"Tucci\",\r\n    \"email\": \"taylorina@gmail.com\",\r\n    \"password\": \"stuckin1989\",\r\n    \"age\": 27\r\n\r\n}",
+							"raw": "{\r\n    \"first_name\": \"Tatiana\",\r\n    \"last_name\": \"Rudychenka\",\r\n    \"email\": \"tatiru@gmail.com\",\r\n    \"password\": \"motherRussia\",\r\n    \"age\": 24\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

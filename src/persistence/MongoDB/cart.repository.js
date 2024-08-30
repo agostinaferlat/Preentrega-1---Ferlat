@@ -1,5 +1,4 @@
 import { cartModel } from "./models/cart.model.js";
-import {productModel} from "./models/product.model.js"
 
 const getAll= async () => {
     const cart = await cartModel.find({status: true});
@@ -17,7 +16,7 @@ const create = async () => {
 };
 
 const update = async (id, data) => {
-    await cartModel.findByIdAndUpdate(id, data, {new: true});
+    const cartUpdate = await cartModel.findByIdAndUpdate(id, data, {new: true});
     return cartUpdate;
 };
 
